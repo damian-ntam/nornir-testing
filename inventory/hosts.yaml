@@ -1,0 +1,11 @@
+---
+csr1kv:
+  nornir_host: 127.0.0.1
+  nornir_ssh_port: 2222
+  nornir_username: vagrant
+  nornir_password: vagrant
+  site: test
+  role: access
+  groups:
+    - test1
+  nornir_nos: ios

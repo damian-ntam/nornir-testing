@@ -1,0 +1,10 @@
+---
+defaults:
+  domain: dna.lab
+
+global:
+  domain: dna.lab
+  asn: 1
+
+test1:
+  asn: 65000
