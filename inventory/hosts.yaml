@@ -9,3 +9,4 @@ csr1kv:
   groups:
     - test1
   nornir_nos: ios
+  type: network_device

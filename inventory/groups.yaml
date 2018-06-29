@@ -8,3 +8,4 @@ global:
 
 test1:
   asn: 65000
+  ntp: pool.ntp.org

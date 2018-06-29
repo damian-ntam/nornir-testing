@@ -1,7 +1,6 @@
 from nornir.core import InitNornir
 from nornir.plugins.tasks import commands, networking
 from nornir.plugins.functions.text import print_result
-import logging
 
 def device_audit(task):
     task.run(task=networking.napalm_get, name="Device Interfaces", getters=["interfaces"])
