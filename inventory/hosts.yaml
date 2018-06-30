@@ -1,12 +1,23 @@
 ---
-csr1kv:
+router1:
   nornir_host: 127.0.0.1
-  nornir_ssh_port: 2222
+  nornir_ssh_port: 2203
   nornir_username: vagrant
   nornir_password: vagrant
   site: test
-  role: access
+  role: agg
   groups:
     - test1
   nornir_nos: ios
+  type: network_device
+switch1:
+  nornir_host: 127.0.0.1
+  nornir_ssh_port: 2225
+  nornir_username: vagrant
+  nornir_password: vagrant
+  site: test
+  role: tor
+  groups:
+    - test1
+  nornir_nos: nxos
   type: network_device

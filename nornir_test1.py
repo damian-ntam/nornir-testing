@@ -9,10 +9,7 @@ def device_audit(task):
 
 host_inv = InitNornir(config_file="config.yaml")
 
-test_hosts = host_inv.filter(site="test", role="access")
-
-rmcmd_result = test_hosts.run(task=commands.remote_command, command="dir")
-print_result(rmcmd_result, vars=["stdout"])
+test_hosts = host_inv.filter(site="test", type="network_device")
 
 napalm_result = test_hosts.run(task=networking.napalm_get,getters=["facts"])
 print_result(napalm_result)
