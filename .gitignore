@@ -9,9 +9,6 @@ __pycache__/
 # VSCode
 .vscode
 
-# Nornir
-nornir.log
-
 # Distribution / packaging
 .Python
 build/
