@@ -27,8 +27,8 @@ def enable_scp_ios(task):
 
 nn = InitNornir(config_file="config.yaml", dry_run=False)
 # Filter the inventory based on some attributes of devices. In this case the 'site' and 'type.'
-test_site_devices = nn.filter(site="test", type="network_device")
-ios_test_site_devices = nn.filter(site="test", nornir_nos="ios") # Filter based on site and OS.
+test_site_devices = nn.filter(site="chiba", type="network_device")
+ios_test_site_devices = nn.filter(site="chiba", nornir_nos="ios") # Filter based on site and OS.
 
 #Get configuration from IOS devices
 ios_config_result = ios_test_site_devices.run(task=networking.napalm_get,

@@ -4,10 +4,10 @@ router1:
   nornir_ssh_port: 2203
   nornir_username: vagrant
   nornir_password: vagrant
-  site: test
+  site: chiba
   role: agg
   groups:
-    - test1
+    - wintermute
   nornir_nos: ios
   type: network_device
 switch1:
@@ -15,9 +15,9 @@ switch1:
   nornir_ssh_port: 2225
   nornir_username: vagrant
   nornir_password: vagrant
-  site: test
+  site: chiba
   role: tor
   groups:
-    - test1
+    - wintermute
   nornir_nos: nxos
   type: network_device

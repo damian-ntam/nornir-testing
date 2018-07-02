@@ -1,11 +1,11 @@
 ---
 defaults:
-  domain: dna.lab
+  domain: case.lab
 
 global:
-  domain: dna.lab
+  domain: case.lab
   asn: 1
 
-test1:
+wintermute:
   asn: 65000
   ntp: pool.ntp.org
