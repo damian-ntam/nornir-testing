@@ -25,20 +25,21 @@ def enable_scp_ios(task):
                 command_string="configure terminal\n\nip scp server enable\n\nend\n\n")
     return r
 
-init_nornir = InitNornir(config_file="config.yaml", dry_run=False)
+nn = InitNornir(config_file="config.yaml", dry_run=False)
 # Filter the inventory based on some attributes of devices. In this case the 'site' and 'type.'
-test_site_devices = init_nornir.filter(site="test", type="network_device")
-ios_test_site_devices = init_nornir.filter(site="test", nornir_nos="ios") # Filter based on site and OS.
+test_site_devices = nn.filter(site="test", type="network_device")
+ios_test_site_devices = nn.filter(site="test", nornir_nos="ios") # Filter based on site and OS.
 
-print_title("Playbook to enable SCP on IOS devices at site 'test.'")
-# Work in progress to get validation of SCP working...
+#Get configuration from IOS devices
 ios_config_result = ios_test_site_devices.run(task=networking.napalm_get,
                                                         getters=["config"])
-print_result(ios_config_result, vars=["config"])
+# Check the running configuration of IOS devices and if not configured for SCP, configure it.
+for h, r in ios_config_result.items():
+    if "ip scp server enable" not in r.result["config"]["running"]:
+        print_title("Playbook to enable SCP on IOS devices at site 'test.'")
+        ios_scp_enable_result = ios_test_site_devices.run(task=enable_scp_ios)
+        print_result(ios_scp_enable_result)
 
-# ios_scp_enable_result = ios_test_site_devices.run(task=enable_scp_ios)
-# print_result(ios_scp_enable_result)
-
-# print_title("Playbook to configure the network devices at site 'test'.")
-# basic_configuration_result = test_site_devices.run(task=basic_configuration)
-# print_result(basic_configuration_result)
+print_title("Playbook to configure the network devices at site 'test'.")
+basic_configuration_result = test_site_devices.run(task=basic_configuration)
+print_result(basic_configuration_result)
